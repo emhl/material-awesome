@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   aria-hidden="true"
+   focusable="false"
+   data-prefix="fas"
+   data-icon="pen"
+   class="svg-inline--fa fa-pen fa-w-16"
+   role="img"
+   viewBox="0 0 240 239.98979"
+   version="1.1"
+   id="svg954"
+   sodipodi:docname="pen-solid.svg"
+   width="240"
+   height="239.98979"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs958" />
+  <sodipodi:namedview
+     id="namedview956"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.99804688"
+     inkscape:cx="255.49902"
+     inkscape:cy="256"
+     inkscape:window-width="900"
+     inkscape:window-height="700"
+     inkscape:window-x="755"
+     inkscape:window-y="56"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg954">
+    <inkscape:grid
+       type="xygrid"
+       id="grid1292"
+       originx="0.010860353"
+       originy="-0.0074999999" />
+  </sodipodi:namedview>
+  <path
+     fill="currentColor"
+     d="m 133.57159,56.41715 50.00651,50.0065 -108.587011,108.58702 -44.584774,4.92173 c -5.968595,0.66015 -11.011432,-4.3866 -10.347387,-10.3552 l 4.960809,-44.616 z m 80.93539,-7.445119 -23.47985,-23.479856 c -7.32404,-7.324028 -19.20263,-7.324028 -26.52666,0 L 142.4112,47.581443 192.41771,97.58795 214.50698,75.498683 c 7.32403,-7.327933 7.32403,-19.202624 0,-26.526652 z"
+     id="path952"
+     style="fill:#fffffc;fill-opacity:1;stroke-width:0.390615" />
+</svg>

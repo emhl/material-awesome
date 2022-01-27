@@ -81,6 +81,7 @@ local globalKeys =
     'l',
     function()
       awful.spawn(apps.default.lock)
+      --_G.exit_screen_show()
     end,
     {description = 'Lock the screen', group = 'awesome'}
   ),
@@ -245,42 +246,13 @@ local globalKeys =
     end,
     {description = 'restore minimized', group = 'client'}
   ),
-  -- Dropdown application
-  awful.key(
-    {modkey},
-    'z',
-    function()
-      _G.toggle_quake()
-    end,
-    {description = 'dropdown application', group = 'launcher'}
-  ),
-  -- Widgets popups
-  --[[awful.key(
-    {altkey},
-    'h',
-    function()
-      if beautiful.fs then
-        beautiful.fs.show(7)
-      end
-    end,
-    {description = 'show filesystem', group = 'widgets'}
-  ),
-  awful.key(
-    {altkey},
-    'w',
-    function()
-      if beautiful.weather then
-        beautiful.weather.show(7)
-      end
-    end,
-    {description = 'show weather', group = 'widgets'}
-  ),--]]
+
   -- Brightness
   awful.key(
     {},
     'XF86MonBrightnessUp',
     function()
-      awful.spawn('xbacklight -inc 10')
+      awful.spawn('light -A 10')
     end,
     {description = '+10%', group = 'hotkeys'}
   ),
@@ -288,7 +260,7 @@ local globalKeys =
     {},
     'XF86MonBrightnessDown',
     function()
-      awful.spawn('xbacklight -dec 10')
+      awful.spawn('light -U 10')
     end,
     {description = '-10%', group = 'hotkeys'}
   ),
@@ -316,7 +288,7 @@ local globalKeys =
       awful.spawn('amixer -D pulse set Master 1+ toggle')
     end,
     {description = 'toggle mute', group = 'hotkeys'}
-  ),
+  ),--[[
   awful.key(
     {},
     'XF86AudioNext',
@@ -332,14 +304,22 @@ local globalKeys =
       --
     end,
     {description = 'toggle mute', group = 'hotkeys'}
-  ),
+  ), --]]
   awful.key(
     {},
     'XF86PowerOff',
     function()
       _G.exit_screen_show()
     end,
-    {description = 'toggle mute', group = 'hotkeys'}
+    {description = 'show exit screen', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
+    'XF86AudioMicMute',
+    function()
+      awful.spawn('amixer -c 0 sset Capture toggle')
+    end,
+    {description = 'toggle mic', group = 'hotkeys'}
   ),
   -- Screen management
   awful.key(

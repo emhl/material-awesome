@@ -18,18 +18,18 @@ local slider =
 slider:connect_signal(
   'property::value',
   function()
-    awful.util.spawn_with_shell("xrandr --output $(xrandr | grep LVDS | awk '{print $1}') --brightness " .. math.max(slider.value/99))  
+    spawn('light -S ' .. math.max(slider.value, 5))
   end
 )
 
 -- this does not properly work when using xrandr
 watch(
-  [[bash -c "xbacklight --get"]],
+  [[bash -c "light"]],
   1,
   function(widget, stdout, stderr, exitreason, exitcode)
     local brightness = string.match(stdout, '(%d+)')
 
-    slider:set_value(tonumber(brightness)*100)
+    slider:set_value(tonumber(brightness))
     collectgarbage('collect')
   end
 )

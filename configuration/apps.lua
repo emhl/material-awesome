@@ -8,20 +8,20 @@ local rofi_command = 'env /usr/bin/rofi -dpi ' .. get_dpi() .. ' -width ' .. wit
 return {
   -- List of apps to start by default on some actions
   default = {
-    terminal = 'env x-terminal-emulator -e /usr/bin/env TERM=xterm-256color byobu',
+    terminal = 'gnome-terminal',
     rofi = rofi_command,
     lock = 'i3lock-fancy',
-    quake = 'alacritty',
-    screenshot = 'screenshot -m -s', --'~/.config/awesome/configuration/utils/screenshot -m',
-    region_screenshot = 'screenshot -r -s', --'~/.config/awesome/configuration/utils/screenshot -r',
-    delayed_screenshot = 'screenshot -d 10 -r', --'~/.config/awesome/configuration/utils/screenshot --delayed -r',
-    ss_and_edit_screenshot = 'screenshot -r',
+    screenshot = 'gnome-screenshot -c', --'~/.config/awesome/configuration/utils/screenshot -m',
+    region_screenshot = 'gnome-screenshot -a -c', --'~/.config/awesome/configuration/utils/screenshot -r',
+    delayed_screenshot = 'gnome-screenshot -d -a 5 -c', --'~/.config/awesome/configuration/utils/screenshot --delayed -r',
+    ss_and_edit_screenshot = 'gnome-screenshot -i',
     
     -- Editing these also edits the default program
     -- associated with each tag/workspace
-    browser = 'env vivaldi',
-    editor = 'code', -- gui text editor
-    social = 'env discord',
+    browser = 'env brave-browser',
+    write = 'xournalpp',
+    editor = 'gnome-terminal',
+    social = 'flatpak run com.discordapp.Discord',
     game = rofi_command,
     files = 'nautilus',
     music = rofi_command
@@ -38,9 +38,11 @@ return {
     '/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
     --'/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
     'blueman-tray', -- bluetooth tray
-    'geary --hidden', -- Email client
+    --'geary --hidden', -- Email client
     -- Add applications that need to be killed between reloads
     -- to avoid multipled instances, inside the awspawn script
-    '~/.config/awesome/configuration/awspawn' -- Spawn "dirty" apps that can linger between sessions
+    '~/.config/awesome/configuration/awspawn', -- Spawn "dirty" apps that can linger between sessions
+    'xfce4-clipman', -- clipboard manager
+    'kdeconnect-indicator' -- KDE Connect
   }
 }

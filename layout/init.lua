@@ -40,7 +40,7 @@ local tafel =
   )
 
 local tafelanschrieb = {
-  "test!",
+  "{ {  {    {\n {   {   {  {   { \n {  { { ",
   "Ich kann auf dieser Tafel <b><i>Irgendeinen</i></b> komblett beliebigen Text abbilden ^^",
   "Mich hinzusetzen widerspricht <u>allem</u> wofuer ich stehe!!",
   "Kartoffels haben keine gefuehle",
@@ -60,7 +60,19 @@ local tafelanschrieb = {
   "„Köpfchen in das Wasser, Schwänzchen in die Höh.“ \n- CIA-Verhörmethode",
   "„Ich sehe was, was du nicht siehst.“ \n- NSA",
   "„Das Problem mit Zitaten im Internet ist, dass man nie weiß ob sie stimmen.“ \n- Albert Einstein",
-  "Ich mache jetzt was mit Medien. \n- Josef Göbbels"
+  "Ich mache jetzt was mit Medien. \n- Josef Göbbels",
+  "Nachts ist es kälter als draußen",
+  "können wir bei euch unsere Zelte aufbauen? - Ach ihr macht Käs? (alter Ösi)",
+  "Nicht so tief Rüdiger",
+  "Wein auf Bier das rat ich dir - Bier auf Wein, das rat ich dir auch.",
+  "Penis\n\n 8=====D\n\n\n\t hihi",
+  "Was Schlaues - Frederik",
+  "Reden ist schweigen und Silber ist Gold.",
+  "wann Bubatz legal?",
+  "Niemand hat die Absicht diese Tafel zu wischen",
+  "Fundamentales Theorem der Ingineurs- wissenschaften:\n\nπ = e = 3",
+  "Annie are you -273,15°C?",
+  "25 - 5 / 5 = 4!"
 }
 
 math.randomseed(os.time())

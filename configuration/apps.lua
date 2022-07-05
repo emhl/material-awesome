@@ -8,20 +8,20 @@ local rofi_command = 'env /usr/bin/rofi -dpi ' .. get_dpi() .. ' -width ' .. wit
 return {
   -- List of apps to start by default on some actions
   default = {
-    terminal = 'gnome-terminal',
+    terminal = 'xfce4-terminal',
     rofi = rofi_command,
-    lock = 'i3lock-fancy',
-    screenshot = 'gnome-screenshot -c', --'~/.config/awesome/configuration/utils/screenshot -m',
-    region_screenshot = 'gnome-screenshot -a -c', --'~/.config/awesome/configuration/utils/screenshot -r',
-    delayed_screenshot = 'gnome-screenshot -d -a 5 -c', --'~/.config/awesome/configuration/utils/screenshot --delayed -r',
-    ss_and_edit_screenshot = 'gnome-screenshot -i',
+    lock = 'xflock4',
+    screenshot = 'flameshot gui -c -s', 
+    region_screenshot = 'flameshot gui', 
+    delayed_screenshot = 'flameshot screen -d 5000 -c', 
+    ss_and_edit_screenshot = 'flameshot gui',
     
     -- Editing these also edits the default program
     -- associated with each tag/workspace
-    browser = 'env brave-browser',
+    browser = 'env brave',
     write = 'xournalpp',
-    editor = 'gnome-terminal',
-    social = 'flatpak run com.discordapp.Discord',
+    editor = 'subl',
+    social = 'env discord',
     game = rofi_command,
     files = 'nautilus',
     music = rofi_command
@@ -31,18 +31,21 @@ return {
     'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
     'nm-applet --indicator', -- wifi
     --'blueberry-tray', -- Bluetooth tray icon
-    --'xfce4-power-manager', -- Power manager
+    'xfce4-power-manager', -- Power manager
     'ibus-daemon --xim --daemonize', -- Ibus daemon for keyboard
-    'scream-start', -- scream audio sink
-    'numlockx on', -- enable numlock
-    '/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
+    --'scream-start', -- scream audio sink
+    --'numlockx on', -- enable numlock
+    '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
     --'/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
-    'blueman-tray', -- bluetooth tray
+    -- 'blueman-applet', -- bluetooth tray
     --'geary --hidden', -- Email client
     -- Add applications that need to be killed between reloads
     -- to avoid multipled instances, inside the awspawn script
     '~/.config/awesome/configuration/awspawn', -- Spawn "dirty" apps that can linger between sessions
     'xfce4-clipman', -- clipboard manager
-    'kdeconnect-indicator' -- KDE Connect
+    'pamac-tray', -- package manager tray icon
+    'kdeconnect-indicator', -- KDE Connect
+    'light-locker', -- lockscreen deamon 
+    'flameshot' -- screenshots
   }
 }

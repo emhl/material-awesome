@@ -25,6 +25,15 @@ awful.rules.rules = {
       maximized_vertical = false
     }
   },
+  -- binding Programs to workspaces
+  { rule = { instance = "discord" },
+  properties = { tag = "4" } },
+  { rule = { instance = "xournalpp" },
+  properties = { tag = "2" } },
+  { rule = { instance = "brave-browser" },
+  properties = { tag = "1" } },
+  { rule = { instance = "signal" },
+  properties = { tag = "4" } },
   {
     rule_any = {name = {'QuakeTerminal'}},
     properties = {skip_decoration = true}

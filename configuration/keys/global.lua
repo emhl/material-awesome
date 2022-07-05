@@ -2,7 +2,7 @@ local awful = require('awful')
 require('awful.autofocus')
 local beautiful = require('beautiful')
 local hotkeys_popup = require('awful.hotkeys_popup').widget
-
+local naughty = require('naughty')
 local modkey = require('configuration.keys.mod').modKey
 local altkey = require('configuration.keys.mod').altKey
 local apps = require('configuration.apps')
@@ -38,9 +38,10 @@ local globalKeys =
     {modkey},
     'r',
     function()
-      _G.screen.primary.left_panel:toggle(true)
+      --_G.screen.primary.left_panel:toggle(true)
+      awful.spawn('rofi -combi-modi window,drun -show combi -modi combi')
     end,
-    {description = 'show main menu', group = 'awesome'}
+    {description = 'show run prompt', group = 'awesome'}
   ),
   awful.key(
     {altkey},
@@ -84,6 +85,14 @@ local globalKeys =
       --_G.exit_screen_show()
     end,
     {description = 'Lock the screen', group = 'awesome'}
+  ),
+  awful.key(
+    {modkey, 'Shift'},
+    'l',
+    function()
+      _G.exit_screen_show()
+    end,
+    {description = 'Log Out Screen', group = 'awesome'}
   ),
   awful.key(
     {'Control','Shift'},
@@ -141,6 +150,14 @@ local globalKeys =
       awful.util.spawn_with_shell('brave-browser')
     end,
     {description = 'Open Brave', group = 'launcher'}
+  ),
+    awful.key(
+    {modkey},
+    'y',
+    function()
+      awful.util.spawn_with_shell('protonvpn-cli c -r && python3 /home/emil/Updated-User-Generator/namesforreddit.py')
+    end,
+    {description = 'create reddit account', group = 'launcher'}
   ),
   -- Standard program
   awful.key(
@@ -321,6 +338,29 @@ local globalKeys =
     end,
     {description = 'toggle mic', group = 'hotkeys'}
   ),
+  awful.key(
+    {},
+    'XF86WLAN',
+    function()
+      awful.spawn.easy_async('systemctl is-active avahi-daemon', function(stdout)
+        naughty.notify { text = stdout }
+        if (stdout == 'inactive\n') then 
+          awful.spawn('systemctl start avahi-daemon')
+        elseif (stdout == 'active\n') then
+          awful.spawn('systemctl stop avahi-daemon')
+        end
+      end)
+    end,
+    {description = 'toggle avahi-deamon', group = 'hotkeys'}
+  ),
+  awful.key(
+    {modkey},
+    'v',
+    function()
+      awful.spawn('xfce4-popup-clipman')
+    end,
+    {description = 'show clipboard history', group = 'hotkeys'}
+  ),
   -- Screen management
   awful.key(
     {modkey},
@@ -358,9 +398,9 @@ local globalKeys =
     {modkey},
     'e',
     function()
-      awful.util.spawn_with_shell('emoji-toggle')
+      awful.util.spawn_with_shell('rofimoji --skin-tone light --action clipboard')
     end,
-    {description = 'Toggle the ibus unimoji engine for writing emojis', group = 'hotkeys'}
+    {description = 'start rojimoji to choose and pick emoji', group = 'hotkeys'}
   )
 )
 

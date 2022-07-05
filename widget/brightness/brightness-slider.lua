@@ -18,7 +18,7 @@ local slider =
 slider:connect_signal(
   'property::value',
   function()
-    spawn('light -S ' .. math.max(slider.value, 5))
+    spawn('light -S ' .. math.max(slider.value, 0.1))
   end
 )
 

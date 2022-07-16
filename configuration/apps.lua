@@ -21,13 +21,14 @@ return {
     browser = 'env brave',
     write = 'xournalpp',
     editor = 'subl',
-    social = 'env discord',
+    social = 'env discord-canary',
     game = rofi_command,
-    files = 'nautilus',
+    files = 'thunar',
     music = rofi_command
   },
   -- List of apps to start once on start-up
   run_on_start_up = {
+    'xset b off', -- stop beeping
     'compton --config ' .. filesystem.get_configuration_dir() .. '/configuration/compton.conf',
     'nm-applet --indicator', -- wifi
     --'blueberry-tray', -- Bluetooth tray icon

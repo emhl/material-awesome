@@ -18,18 +18,18 @@ local slider =
 slider:connect_signal(
   'property::value',
   function()
-    spawn('light -S ' .. math.max(slider.value, 0.1))
+    spawn('brightnessctl set ' .. math.max(slider.value*12, 1))
   end
 )
 
 -- this does not properly work when using xrandr
 watch(
-  [[bash -c "light"]],
+  [[bash -c "brightnessctl get"]],
   1,
   function(widget, stdout, stderr, exitreason, exitcode)
     local brightness = string.match(stdout, '(%d+)')
 
-    slider:set_value(tonumber(brightness))
+    slider:set_value(tonumber(brightness)/12)
     collectgarbage('collect')
   end
 )

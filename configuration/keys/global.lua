@@ -138,16 +138,26 @@ local globalKeys =
     {modkey},
     'b',
     function()
-      awful.util.spawn(apps.default.browser)
+      awful.util.spawn('rfkill unblock 2 && bluetoothctl power on && bluetooth-autoconnect')
+      naughty.notify { text ='bluetooth activated'}
     end,
-    {description = 'open a browser', group = 'launcher'}
+    {description = 'enable bluetooth amd autoconnect', group = 'hotkeys'}
+  ),
+  awful.key(
+    {modkey},
+    'n',
+    function()
+      awful.util.spawn('bluetoothctl power off && rfkill block 2')
+      naughty.notify { text ='bluetooth deactivated'}
+    end,
+    {description = 'disable bluetooth', group = 'hotkeys'}
   ),
   -- Open private browser/brave
   awful.key(
     {modkey},
     'p',
     function()
-      awful.util.spawn_with_shell('brave-browser')
+      awful.util.spawn_with_shell('brave')
     end,
     {description = 'Open Brave', group = 'launcher'}
   ),

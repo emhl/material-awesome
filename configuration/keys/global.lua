@@ -279,7 +279,10 @@ local globalKeys =
     {},
     'XF86MonBrightnessUp',
     function()
-      awful.spawn('brightnessctl set +120')
+      awful.spawn('brightnessctl set +30')
+      awful.spawn.easy_async('brightnessctl get', function(stdout)
+        naughty.notify { text = 'brightness: ' .. tostring(math.ceil(tonumber(stdout)/12)) .. '%'  , replaces_id=1}
+      end)
     end,
     {description = '+10%', group = 'hotkeys'}
   ),
@@ -287,35 +290,39 @@ local globalKeys =
     {},
     'XF86MonBrightnessDown',
     function()
-      awful.spawn('brightnessctl set 120-')
+      awful.spawn('brightnessctl set 30-')
+      awful.spawn.easy_async('brightnessctl get', function(stdout)
+        naughty.notify { text =  'brightness: ' .. tostring(math.ceil(tonumber(stdout)/12)) .. '%' , replaces_id=1}
+      end)
     end,
     {description = '-10%', group = 'hotkeys'}
   ),
   -- ALSA volume control
-  awful.key(
-    {},
-    'XF86AudioRaiseVolume',
-    function()
-      awful.spawn('amixer -D pulse sset Master 5%+')
-    end,
-    {description = 'volume up', group = 'hotkeys'}
-  ),
-  awful.key(
-    {},
-    'XF86AudioLowerVolume',
-    function()
-      awful.spawn('amixer -D pulse sset Master 5%-')
-    end,
-    {description = 'volume down', group = 'hotkeys'}
-  ),
-  awful.key(
-    {},
-    'XF86AudioMute',
-    function()
-      awful.spawn('amixer -D pulse set Master 1+ toggle')
-    end,
-    {description = 'toggle mute', group = 'hotkeys'}
-  ),--[[
+  -- awful.key(
+  --   {},
+  --   'XF86AudioRaiseVolume',
+  --   function()
+  --     awful.spawn('amixer -D pulse sset Master 5%+')
+  --   end,
+  --   {description = 'volume up', group = 'hotkeys'}
+  -- ),
+  -- awful.key(
+  --   {},
+  --   'XF86AudioLowerVolume',
+  --   function()
+  --     awful.spawn('amixer -D pulse sset Master 5%-')
+  --   end,
+  --   {description = 'volume down', group = 'hotkeys'}
+  -- ),
+  -- awful.key(
+  --   {},
+  --   'XF86AudioMute',
+  --   function()
+  --     awful.spawn('amixer -D pulse set Master 1+ toggle')
+  --   end,
+  --   {description = 'toggle mute', group = 'hotkeys'}
+  -- ),
+  --[[
   awful.key(
     {},
     'XF86AudioNext',
@@ -332,22 +339,22 @@ local globalKeys =
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ), --]]
-  awful.key(
-    {},
-    'XF86PowerOff',
-    function()
-      _G.exit_screen_show()
-    end,
-    {description = 'show exit screen', group = 'hotkeys'}
-  ),
-  awful.key(
-    {},
-    'XF86AudioMicMute',
-    function()
-      awful.spawn('amixer -c 0 sset Capture toggle')
-    end,
-    {description = 'toggle mic', group = 'hotkeys'}
-  ),
+  -- awful.key(
+  --   {},
+  --   'XF86PowerOff',
+  --   function()
+  --     _G.exit_screen_show()
+  --   end,
+  --   {description = 'show exit screen', group = 'hotkeys'}
+  -- ),
+  -- awful.key(
+  --   {},
+  --   'XF86AudioMicMute',
+  --   function()
+  --     awful.spawn('amixer -c 0 sset Capture toggle')
+  --   end,
+  --   {description = 'toggle mic', group = 'hotkeys'}
+  -- ),
   awful.key(
     {},
     'XF86WLAN',

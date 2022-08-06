@@ -15,7 +15,10 @@ local slider =
 slider:connect_signal(
   'property::value',
   function()
-    spawn('amixer -D pulse sset Master ' .. slider.value .. '%')
+    if (slider.value <= 100) then
+      spawn('amixer -D pulse sset Master ' .. slider.value .. '%')
+      -- spawn('pulsemixer --set-volume' .. slider.value )
+    end
   end
 )
 

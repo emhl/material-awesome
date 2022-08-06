@@ -41,13 +41,11 @@ return {
     'pamac-tray', -- package manager tray icon
     'kdeconnect-indicator', -- KDE Connect
     'light-locker', -- lockscreen deamon 
-    'pasystray --notify=all', -- audio manager sytray
+    'pasystray --notify=all -g --volume-max=200 --volume-inc=5', -- audio manager sytray
     'flameshot', -- screenshots
     'nmcli r wifi on', -- enable wifi
-
-
     -- Add applications that need to be killed between reloads
     -- to avoid multipled instances, inside the awspawn script
-    '~/.config/awesome/configuration/awspawn' -- Spawn "dirty" apps that can linger between sessions
+    -- '~/.config/awesome/configuration/awspawn' -- Spawn "dirty" apps that can linger between sessions
   }
 }

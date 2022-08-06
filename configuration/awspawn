@@ -12,8 +12,9 @@
 # to allow out of tree autostart programs
 APPS=(
     kdeconnect-indicator
-    radeon-profile
+    # radeon-profile
     $HOME/.config/awesomestart
+    # pasystray --notify=all -g --volume-max=200 --volume-inc=5
     )
 
 # Some applications start child applications that need to be killed on reload

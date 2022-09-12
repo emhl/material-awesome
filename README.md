@@ -42,6 +42,7 @@ An almost desktop environment made with [AwesomeWM](https://awesomewm.org/) foll
 
 ```shell
 git clone https://github.com/emhl/material-awesome.git ~/.config/awesome
+cd ~/.config/awesome && git submodule init && git submodule update
 ```
 
 ### 3) Set the themes

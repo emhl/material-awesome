@@ -43,6 +43,14 @@ local globalKeys =
     end,
     {description = 'show run prompt', group = 'awesome'}
   ),
+    awful.key(
+    {modkey},
+    'e',
+    function()
+      awful.util.spawn_with_shell('kill -s USR1 $(pidof deadd-notification-center)')
+    end,
+    {description = 'toggle notification center', group = 'awesome'}
+  ),
   awful.key(
     {altkey},
     'space',
@@ -90,7 +98,8 @@ local globalKeys =
     {modkey, 'Shift'},
     'l',
     function()
-      _G.exit_screen_show()
+      awful.spawn('bash .config/awesome/module/powermenu.sh')
+      -- _G.exit_screen_show()
     end,
     {description = 'Log Out Screen', group = 'awesome'}
   ),
@@ -355,6 +364,7 @@ local globalKeys =
   --   end,
   --   {description = 'toggle mic', group = 'hotkeys'}
   -- ),
+  -- toggle avahi deamon to avoid laptop using to much resources by indexing the endire univerity's network
   awful.key(
     {},
     'XF86WLAN',
@@ -399,26 +409,26 @@ local globalKeys =
         )
     end,
     {description = 'open default program for tag/workspace', group = 'tag'}
-  ),
+  )
   -- Custom hotkeys
   -- vfio integration
-  awful.key(
-    {'Control',altkey},
-    'space',
-    function()
-      awful.util.spawn_with_shell('vm-attach attach')
-    end
-  ),
+  -- awful.key(
+  --   {'Control',altkey},
+  --   'space',
+  --   function()
+  --     awful.util.spawn_with_shell('vm-attach attach')
+  --   end
+  -- ),
   -- Emoji typing
   -- setup info at https://gist.github.com/HikariKnight/8562837d28dec3674dba027c7892e6a5
-  awful.key(
-    {modkey},
-    'e',
-    function()
-      awful.util.spawn_with_shell('rofimoji --skin-tone light --action clipboard')
-    end,
-    {description = 'start rojimoji to choose and pick emoji', group = 'hotkeys'}
-  )
+  -- awful.key(
+  --   {modkey},
+  --   'e',
+  --   function()
+  --     awful.util.spawn_with_shell('rofimoji --skin-tone light --action clipboard')
+  --   end,
+  --   {description = 'start rojimoji to choose and pick emoji', group = 'hotkeys'}
+  -- )
 )
 
 -- Bind all key numbers to tags.

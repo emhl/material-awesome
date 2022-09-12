@@ -77,10 +77,20 @@ local tafelanschrieb = {
 
 math.randomseed(os.time())
 
+local fortunes = {
+  "fortune -n 69 -sa de/sprueche de/wusstensie de/regeln de/tips",
+  "fortune -n 69 -sa de/mathematiker tafelanschrieb",
+  "fortune -n 69 -sa de/woerterbuch de/unfug",
+  "fortune -n 69 -sa science",
+  "fortune -n 69 -sa goedel anti-jokes paradoxum"
+}
+
+awful.spawn.easy_async(fortunes[math.random(#fortunes)], function(stdout)
+
 tafel:setup {
   layout = wibox.layout.align.horizontal,
   wibox.widget{
-    markup = tafelanschrieb[math.random(#tafelanschrieb)],
+    markup = stdout,
     align  = 'center',
     valign = 'top',
     wrap = 'word',
@@ -88,6 +98,8 @@ tafel:setup {
     widget = wibox.widget.textbox
   }
 }
+
+end)
 
 
 -- Hide bars when app go fullscreen

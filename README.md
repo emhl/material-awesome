@@ -38,11 +38,19 @@ An almost desktop environment made with [AwesomeWM](https://awesomewm.org/) foll
 <!-- - (Optional) [xbacklight](https://www.x.org/archive/X11R7.5/doc/man/man1/xbacklight.1.html) for adjusting brightness on laptops (disabled by default) -->
 <!-- - (Optional) [kde-spectacle](https://kde.org/applications/utilities/org.kde.spectacle) my personal screenshot utility of choice, can be replaced by whichever you want, just remember to edit the screenshot utility script -->
 
+on Manjaro:
+```sh
+pamac install awesome ttf-roboto rofi pasystray bluez-utils flameshot brightnessctl \
+gnome-keyring polkit-gnome materia-gtk-theme papirus-icon-theme lxappearance \
+fortune-mod fortune-mod-anti-jokes-git fortune-mod-de-git xfce4-clipman-plugin
+```
+
 ### 2) Clone the configuration
 
 ```shell
 git clone https://github.com/emhl/material-awesome.git ~/.config/awesome
 cd ~/.config/awesome && git submodule init && git submodule update
+sudo cp tafel/tafelanschrieb* /usr/share/fortune
 ```
 
 ### 3) Set the themes

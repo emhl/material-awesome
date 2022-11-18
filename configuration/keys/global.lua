@@ -388,6 +388,14 @@ local globalKeys =
     end,
     {description = 'show clipboard history', group = 'hotkeys'}
   ),
+    awful.key(
+    {modkey},
+    'm',
+    function()
+      awful.spawn('birdtray --toggle-tb')
+    end,
+    {description = 'toggle thunderbird', group = 'hotkeys'}
+  ),
   -- Screen management
   awful.key(
     {modkey},

@@ -34,6 +34,8 @@ awful.rules.rules = {
   properties = { tag = "1" } },
   { rule = { instance = "signal" },
   properties = { tag = "4" } },
+  { rule = { instance = "code" },
+  properties = { tag = "5" } },
   {
     rule_any = {name = {'QuakeTerminal'}},
     properties = {skip_decoration = true}

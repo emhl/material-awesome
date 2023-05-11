@@ -6,6 +6,8 @@ local naughty = require('naughty')
 local modkey = require('configuration.keys.mod').modKey
 local altkey = require('configuration.keys.mod').altKey
 local apps = require('configuration.apps')
+local xrandr = require("module.xrandr")
+
 -- Key bindings
 local globalKeys =
   awful.util.table.join(
@@ -95,7 +97,7 @@ local globalKeys =
     {description = 'Lock the screen', group = 'awesome'}
   ),
   awful.key(
-    {modkey, 'Shift'},
+    {modkey, 'Control'},
     'l',
     function()
       awful.spawn('bash .config/awesome/module/powermenu.sh')
@@ -135,14 +137,14 @@ local globalKeys =
     end,
     {description = 'Mark an area and screenshot it and edit it', group = 'screenshots (clipboard)'}
   ),
-  awful.key(
-    {modkey},
-    'c',
-    function()
-      awful.util.spawn(apps.default.editor)
-    end,
-    {description = 'open a text/code editor', group = 'launcher'}
-  ),
+  -- awful.key(
+  --   {modkey},
+  --   'c',
+  --   function()
+  --     awful.util.spawn(apps.default.editor)
+  --   end,
+  --   {description = 'open a text/code editor', group = 'launcher'}
+  -- ),
   awful.key(
     {modkey},
     'b',
@@ -282,6 +284,14 @@ local globalKeys =
     end,
     {description = 'restore minimized', group = 'client'}
   ),
+  awful.key(
+    {modkey, 'Control'},
+    'm',
+    function()
+	xrandr.xrandr()
+    end,
+    {description = 'set monitor config', group = 'client'}
+  ),
 
   -- Brightness
   awful.key(
@@ -375,6 +385,21 @@ local globalKeys =
           awful.spawn('systemctl start avahi-daemon')
         elseif (stdout == 'active\n') then
           awful.spawn('systemctl stop avahi-daemon')
+        end
+      end)
+    end,
+    {description = 'toggle avahi-deamon', group = 'hotkeys'}
+  ),
+    awful.key(
+    {modkey,'Control'},
+    'n',
+    function()
+      awful.spawn.easy_async('systemctl is-active netbird', function(stdout)
+        naughty.notify { text = stdout }
+        if (stdout == 'inactive\n') then 
+          awful.spawn('netbird service start')
+        elseif (stdout == 'active\n') then
+          awful.spawn('netbird service stop')
         end
       end)
     end,

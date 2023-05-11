@@ -20,7 +20,7 @@ return {
     -- associated with each tag/workspace
     browser = 'env brave',
     write = 'xournalpp',
-    editor = 'subl',
+    editor = 'code',
     social = 'env discord-canary',
     game = rofi_command,
     files = 'thunar',
